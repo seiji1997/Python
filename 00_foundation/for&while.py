@@ -1,5 +1,6 @@
 money = 1000
 items = {'apple': 100, 'banana': 200, 'orange': 400}
+
 for item_name in items:
     print('--------------------------------------------------')
     print('Your wallet contains ' + str(money) + ' yen')
@@ -15,7 +16,7 @@ for item_name in items:
     if money >= total_price:
         print('You bought ' + item_name + ' ' + input_count + ' pieces')
         money -= total_price
-        # Use an if statement to branch the condition when money is 0
+
         if money == 0:
             print("Wallet has been bought")
             print("Wallet is empty")
@@ -25,5 +26,4 @@ for item_name in items:
             print('Not enough money')
             print('Could not buy ' + item_name)
 
-# Use the variable money and type conversion to output "The remaining money is ◯◯◯ yen".
 print("The remaining money is " + str(money) + " yen")
