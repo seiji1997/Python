@@ -1,8 +1,40 @@
-# Python
+# Python Practice Repository
 
-## Learning
-- 1, [Complete Python Developer in 2023: Zero to Mastery](https://www.udemy.com/course/complete-python-developer-zero-to-mastery/)
+このリポジトリは、私がPythonのスキルを向上させるために行った様々な練習問題やプロジェクトを含んでいます。
 
-### Goal in 2024
-- Become a Python master
+## 目次
 
+- [イントロダクション](#イントロダクション)
+- [ディレクトリ構造](#ディレクトリ構造)
+- [インストール](#インストール)
+- [使用方法](#使用方法)
+- [コントリビューション](#コントリビューション)
+- [ライセンス](#ライセンス)
+
+## イントロダクション
+
+このリポジトリは、Pythonの練習問題やプロジェクトのコレクションです。学習の進捗を示すために作成されており、Pythonのコーディングプラクティスに興味のある方の参考にしていただければと思います。
+
+## ディレクトリ構造
+
+以下は、このリポジトリ内の各ディレクトリの説明です：
+
+1. **00_foundation** - Pythonの基本的な構文や操作に関する練習問題
+2. **01_function** - 関数の定義と使用方法、スコープとクロージャーについて
+3. **02_module** - モジュールの作成と使用、Pythonの標準ライブラリの活用
+4. **03_object_oriented_programming** - クラスとオブジェクト指向プログラミングの基本
+5. **04_style_guide** - PEP 8スタイルガイドに従ったコーディング規約
+6. **05_error_and_exception** - エラーハンドリングと例外処理の方法
+7. **06_file_I/O** - ファイルの読み書きとデータの入出力
+8. **07_test** - 単体テストとテスト駆動開発（TDD）の基本
+9. **08_generator_and_iterator** - ジェネレータとイテレータの使い方
+10. **09_database** - データベースとの連携方法とSQLの基本
+11. **AWS_Lambda** - AWS Lambdaを使用したサーバーレスアプリケーションの開発
+
+## インストール
+
+ローカルでプロジェクトや練習問題を実行するには、以下の手順に従ってください：
+
+1. リポジトリをローカルマシンにクローンします：
+   ```bash
+   git clone https://github.com/seiji1997/Python.git
