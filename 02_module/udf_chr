@@ -16,3 +16,30 @@ s_map, reverse_map = generate_custom_map("S", 1, 15)
 print(s_map)           # "S1" -> 101, "S15" -> 115
 print(custom_ord("S10"))  # 任意の文字列のコード取得
 print(custom_chr(110))    # 任意のコードから文字列取得
+
+
+
+def generate_custom_map(mapping):
+    """
+    mapping: キーと対応する値の辞書 (例: {"A": 1, "B": 2, ..., "G": 7})
+    """
+    s_map = {k: v for k, v in mapping.items()}
+    reverse_map = {v: k for k, v in mapping.items()}
+    return s_map, reverse_map
+
+# マッピング生成 (A～G と 1～7 の対応)
+char_to_num_mapping = {chr(65 + i): i + 1 for i in range(7)}  # A=1, ..., G=7
+s_map, reverse_map = generate_custom_map(char_to_num_mapping)
+
+# custom_ord: 文字列からコードを取得
+def custom_ord(s):
+    return s_map[s]
+
+# custom_chr: コードから文字列を取得
+def custom_chr(code):
+    return reverse_map[code]
+
+# 確認
+print(s_map)                  # {"A": 1, "B": 2, ..., "G": 7}
+print(custom_ord("C"))        # 出力: 3
+print(custom_chr(5))          # 出力: "E"
