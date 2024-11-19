@@ -1,0 +1,18 @@
+def generate_custom_map(prefix, start, end, base_code=100):
+    """
+    prefix: 接頭辞 (例: "S")
+    start: 開始番号 (例: 1)
+    end: 終了番号 (例: 15)
+    base_code: ベースとなるコードポイント
+    """
+    s_map = {f"{prefix}{i}": base_code + i for i in range(start, end + 1)}
+    reverse_map = {v: k for k, v in s_map.items()}
+    return s_map, reverse_map
+
+# マッピング生成
+s_map, reverse_map = generate_custom_map("S", 1, 15)
+
+# 確認
+print(s_map)           # "S1" -> 101, "S15" -> 115
+print(custom_ord("S10"))  # 任意の文字列のコード取得
+print(custom_chr(110))    # 任意のコードから文字列取得
