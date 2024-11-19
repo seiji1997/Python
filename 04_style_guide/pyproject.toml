@@ -1,0 +1,16 @@
+# when using "from typing import Any"
+
+[tool.mypy]
+python_version = "3.11"  # プロジェクトで使用している Python バージョン
+ignore_missing_imports = true  # 外部ライブラリの型情報が不足していてもエラーにしない
+disallow_untyped_defs = true  # 型アノテーションがない関数やメソッドをエラーにする
+disallow_incomplete_defs = true  # 引数や戻り値に型指定がないとエラーにする
+check_untyped_defs = true  # 型がない関数でも、可能ならチェックする
+warn_return_any = true  # Any 型の戻り値を警告
+warn_unused_ignores = true  # 不要な `# type: ignore` を警告
+strict_optional = true  # None を許容しない場合に厳密にチェック
+show_error_codes = true  # エラーコードを表示
+allow_redefinition = false  # 同じ名前の変数を再定義するとエラーにする
+
+[tool.mypy.plugins]
+# 使用するプラグインを設定 (例: `dataclasses` や `attrs` に対応)
