@@ -22,7 +22,7 @@ stats = df.describe()
 stats_pd = stats.to_pandas()
 
 # テーブルを HTML 形式に変換（スタイルを適用）
-html_table = stats_pd.to_html(classes='table table-striped', index=False)
+html_table = stats_pd.to_html(classes='table', index=False)
 
 # ユニークなチップ ID のリストを取得し、ソートして順番を固定
 chip_ids = df.select(pl.col('chip').unique()).to_series().to_list()
@@ -112,7 +112,8 @@ fig.update_layout(
     width=1200,
     title_text=title_text,
     showlegend=False,
-    template='plotly_dark'  # カラースキームを 'plotly_dark' に設定
+    template='plotly_dark',  # カラースキームを 'plotly_dark' に設定
+    margin=dict(l=50, r=50, t=100, b=50)  # マージンを調整
 )
 
 # カスタム HTML テンプレートを作成
@@ -122,7 +123,7 @@ html_template = f"""
     <title>プロットと統計情報</title>
     <style>
         body {{
-            background-color: #303030;
+            background-color: #000000;
             color: #FFFFFF;
             font-family: Arial, sans-serif;
         }}
@@ -132,8 +133,11 @@ html_template = f"""
             border-collapse: collapse;
             color: #FFFFFF;
         }}
-        .table-striped tbody tr:nth-of-type(odd) {{
-            background-color: #404040;
+        .table tbody tr:nth-of-type(odd) {{
+            background-color: #404040;  /* 奇数行：暗めのグレー */
+        }}
+        .table tbody tr:nth-of-type(even) {{
+            background-color: #000000;  /* 偶数行：黒 */
         }}
         th, td {{
             padding: 8px 12px;
