@@ -9,6 +9,29 @@ df = df.rename({col: col.lower() for col in df.columns})
 # ユニークな 'day' の値を取得
 day_values = df.select(pl.col('day').unique()).to_series().to_list()
 
+# 'day=1500', 'book=max', 'note=max', 'text=max' の条件で 'max_point' を取得
+df_max_point = df.filter(pl.col('day') == 1500)
+
+# 'book', 'note', 'text' の最大値を取得
+book_max = df_max_point.select(pl.max('book')).item()
+note_max = df_max_point.select(pl.max('note')).item()
+text_max = df_max_point.select(pl.max('text')).item()
+
+# 上記の条件でフィルタリング
+df_max_point_filtered = df_max_point.filter(
+    (pl.col('book') == book_max) &
+    (pl.col('note') == note_max) &
+    (pl.col('text') == text_max)
+)
+
+# 'point' の最大値を取得
+if df_max_point_filtered.is_empty():
+    raise ValueError(
+        f"No data for day=1500, book={book_max}, note={note_max}, text={text_max}"
+    )
+
+max_point = df_max_point_filtered.select(pl.max('point')).item()
+
 for day_value in day_values:
     # 'day' ごとのデータをフィルタリング
     df_day = df.filter(pl.col('day') == day_value)
@@ -67,6 +90,13 @@ for day_value in day_values:
             )
             fig.add_trace(trace, row=1, col=col_idx)
             fig.update_yaxes(type=yaxis_type, row=1, col=col_idx)
+
+            # x軸の範囲を設定
+            fig.update_xaxes(
+                range=[0, max_point * 1.1],
+                row=1,
+                col=col_idx
+            )
 
         # レイアウトの更新
         fig.update_layout(
